@@ -8,4 +8,4 @@ with jsonlines.open('revised_search_results_output.jsonl') as myfile:
 
 with open('waist_extender_url.txt','w') as f:
     for line in lines:
-        f.write('https://www.amazon.com/' + line['url'])
+        f.write('https://www.amazon.com/' + line['url'] + '\n')
