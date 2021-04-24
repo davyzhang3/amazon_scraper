@@ -47,5 +47,5 @@ with open("business_url.txt",'r') as urllist, open('business_info.jsonl','w') as
                 outfile.write("\n")
                 sleep(5)
         else:
-            outfile.write('no data\n') 
+            outfile.write('{' + '"Business Name": null, "Business Address": null' + '}' + '\n') 
 print('done')
