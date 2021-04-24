@@ -1,0 +1,6 @@
+Business Name:
+    css: '#seller-profile-container > div.a-row.a-spacing-medium > div > ul > li:nth-child(1) > span' 
+    type: Text
+Business Address:
+    css: '#seller-profile-container > div.a-row.a-spacing-medium > div > ul > li:nth-child(2) > span > ul'
+    type: Text

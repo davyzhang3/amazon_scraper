@@ -5,21 +5,22 @@ from time import sleep
 
 
 # Create an Extractor by reading from the YAML file
-e = Extractor.from_yaml_file('selectors.yml')
+e = Extractor.from_yaml_file('seller_info.yml')
 
 def scrape(url):  
 
     headers = {
         'dnt': '1',
         'upgrade-insecure-requests': '1',
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
         'sec-fetch-site': 'same-origin',
         'sec-fetch-mode': 'navigate',
         'sec-fetch-user': '?1',
         'sec-fetch-dest': 'document',
         'referer': 'https://www.amazon.com/',
-        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'accept-language': 
+        'en-GB,en-US;q=0.9,en;q=0.8',
     }
 
     # Download the page using requests
@@ -36,11 +37,15 @@ def scrape(url):
     return e.extract(r.text)
 
 # product_data = []
-with open("waist_extender_url.txt",'r') as urllist, open('waist_extender_output.jsonl','w') as outfile:
+with open("business_url.txt",'r') as urllist, open('business_info.jsonl','w') as outfile:
     for url in urllist.read().splitlines():
-        data = scrape(url) 
-        if data:
-            json.dump(data,outfile)
-            outfile.write("\n")
-            sleep(5)
-    
+        if url != 'no data ':
+            data = scrape(url) 
+            if data:
+                print(data)
+                json.dump(data,outfile)
+                outfile.write("\n")
+                sleep(5)
+        else:
+            outfile.write('no data\n') 
+print('done')
